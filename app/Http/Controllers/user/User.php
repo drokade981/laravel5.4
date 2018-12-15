@@ -5,7 +5,7 @@ namespace App\Http\Controllers\user;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Common;
-// use Illuminate\Support\Facades\DB;
+use App\User as users;
 use DB;
 
 class User extends Controller
@@ -18,9 +18,10 @@ class User extends Controller
     }
 
     public function userList()
-    {
-        $users = DB::table('users')->get();
-        echo $users[0]->fname;
+    {        
+        $users = users::all();
+       
+        echo $users[0]->name;
         $users = json_encode($users);
         
         echo '<pre>'; print_r($users); 

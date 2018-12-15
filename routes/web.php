@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::group(['namespace'=>'user'],function()
 {
-    Route::get('/user', 'User@index');
+    Route::get('/user', 'User@index')->middleware(['auth']);
     Route::get('/userList', 'User@userList');
     Route::get('/insert', 'User@insert');
     //Route::match(array('GET', 'POST'), '/insert', 'User@insert');
@@ -28,3 +28,6 @@ Route::group(['namespace'=>'user'],function()
 
 
 //Route::controller('user','user/User');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
